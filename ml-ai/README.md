@@ -1,8 +1,7 @@
 Machine Learning and AI Integration (Data Analysis and Recommendations)
+
 Enhanced Directory Structure:
 
-bash
-Copy code
 smart-irrigation-system/ml-ai/
 ├── models/
 │   ├── irrigation_model.py

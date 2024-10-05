@@ -1,7 +1,16 @@
 import arcgis
 from arcgis.gis import GIS
 from arcgis.features import FeatureLayer
-from config import ARCGIS_USERNAME, ARCGIS_PASSWORD
+import sys
+import os
+
+# Add the parent directory to the system path if the config module is not found
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+try:
+    from config import ARCGIS_USERNAME, ARCGIS_PASSWORD
+except ImportError:
+    raise ImportError("Could not import 'config'. Ensure 'config.py' is in the correct directory.")
 
 def fetch_field_data():
     # Connect to ArcGIS Online

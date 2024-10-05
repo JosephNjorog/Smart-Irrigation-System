@@ -1,23 +1,19 @@
 import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+function Navbar() {
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Smart Irrigation and Crop Monitoring
-        </Typography>
-        <Button color="inherit" component={Link} to="/">Home</Button>
-        <Button color="inherit" component={Link} to="/irrigation">Irrigation</Button>
-        <Button color="inherit" component={Link} to="/crop-health">Crop Health</Button>
-          <Button color="inherit" component={Link} to="/sensor-data">Sensor Data</Button>
-            </Toolbar>
-        </AppBar>
+    <nav className="bg-green-600 p-4">
+      <div className="container mx-auto flex justify-between items-center">
+        <Link to="/" className="text-white text-2xl font-bold">Smart Irrigation</Link>
+        <ul className="flex space-x-4">
+          <li><Link to="/" className="text-white hover:text-green-200">Home</Link></li>
+          <li><Link to="/irrigation" className="text-white hover:text-green-200">Irrigation</Link></li>
+          <li><Link to="/crop-health" className="text-white hover:text-green-200">Crop Health</Link></li>
+          <li><Link to="/sensor-data" className="text-white hover:text-green-200">Sensor Data</Link></li>
+        </ul>
+      </div>
+    </nav>
   );
 }
 

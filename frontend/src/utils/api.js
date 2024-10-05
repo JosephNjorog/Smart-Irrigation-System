@@ -22,7 +22,7 @@ export const createCropHealthData = async (data) => {
   return response.data;
 };
 
-export const getSpatialData = async () => {
-  const response = await axios.get(`${API_URL}/spatial`);
+export const getSensorData = async () => {
+  const response = await axios.get(`${API_URL}/sensor_data`);
   return response.data;
 };

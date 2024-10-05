@@ -1,75 +1,70 @@
-Our Frontend Directory Structure we are implementing:
+# Getting Started with Create React App
 
-smart-irrigation-system/frontend/
-├── public/
-│   ├── index.html
-├── src/
-│   ├── components/
-│   │   ├── Dashboard.js
-│   │   ├── SensorDataDisplay.js
-│   │   ├── IrrigationControl.js
-│   │   ├── CropHealthMonitor.js
-│   │   ├── Notifications.js
-│   ├── services/
-│   │   ├── api.js
-│   │   ├── authService.js
-│   ├── context/
-│   │   ├── AuthContext.js
-│   │   ├── DataContext.js
-│   ├── hooks/
-│   │   ├── useAuth.js
-│   │   ├── useData.js
-│   ├── App.js
-│   ├── index.js
-├── tests/
-│   ├── Dashboard.test.js
-│   ├── SensorDataDisplay.test.js
-│   ├── IrrigationControl.test.js
-│   ├── CropHealthMonitor.test.js
-│   ├── Notifications.test.js
-├── assets/
-│   ├── images/
-│   │   ├── logo.png
-│   ├── styles/
-│   │   ├── main.css
-├── package.json
-└── README.md
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Explanation:
+## Available Scripts
 
-public/ (Static Files):
+In the project directory, you can run:
 
-index.html: Main HTML file.
-src/ (Main Source Code):
+### `npm start`
 
-components/: React components for different parts of the UI.
-Dashboard.js: Main dashboard displaying overall system status.
-SensorDataDisplay.js: Component to display sensor data.
-IrrigationControl.js: Component to control irrigation schedules.
-CropHealthMonitor.js: Component to monitor crop health using image processing results.
-Notifications.js: Component to display alerts and notifications.
-services/: API service files to interact with the backend.
-api.js: Functions to call backend APIs.
-authService.js: Functions for authentication and authorization.
-context/: React Context for managing global state.
-AuthContext.js: Context for authentication state.
-DataContext.js: Context for sensor and irrigation data.
-hooks/: Custom React hooks.
-useAuth.js: Hook for authentication logic.
-useData.js: Hook for fetching and managing data.
-App.js: Main App component.
-index.js: Entry point for the React application.
-tests/ (Testing):
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-Unit tests for React components.
-assets/ (Assets):
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-images/: Directory for images.
-styles/: Directory for CSS styles.
-main.css: Main CSS file.
-Suggested Enhancements:
+### `npm test`
 
-Implement authentication and user management in the frontend.
-Develop a notifications component to display alerts and updates.
-Use React Context to manage global state for authentication and data.
-Add custom hooks for cleaner and reusable logic.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

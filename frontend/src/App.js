@@ -1,13 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import IrrigationPage from './pages/IrrigationPage';
 import CropHealthPage from './pages/CropHealthPage';
 import SensorDataPage from './pages/SensorDataPage';
+import './assets/styles/App.css';
 
 const App = () => {
   return (
     <Router>
+      <Navbar />
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/irrigation" component={IrrigationPage} />

@@ -15,4 +15,10 @@ const Navbar = () => {
         <Button color="inherit" component={Link} to="/">Home</Button>
         <Button color="inherit" component={Link} to="/irrigation">Irrigation</Button>
         <Button color="inherit" component={Link} to="/crop-health">Crop Health</Button>
-        <Button color="inherit" component={Link} to="/sensor-data">Sensor Data</Button
+          <Button color="inherit" component={Link} to="/sensor-data">Sensor Data</Button>
+            </Toolbar>
+        </AppBar>
+  );
+}
+
+export default Navbar;

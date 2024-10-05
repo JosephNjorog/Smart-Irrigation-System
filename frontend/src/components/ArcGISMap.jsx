@@ -11,7 +11,7 @@ const ArcGISMap = () => {
       .then(([MapView, WebMap]) => {
         const webmap = new WebMap({
           portalItem: {
-            id: 'your-arcgis-webmap-id', // Replace with your ArcGIS web map ID
+            id: 'your-arcgis-webmap-id', // Replace with your ArcGIS web map ID from the
           },
         });
 

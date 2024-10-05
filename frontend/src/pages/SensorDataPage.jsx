@@ -1,45 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Typography, Grid, Paper, CircularProgress } from '@mui/material';
-import { getSensorData } from '../utils/api'; // Assuming there's an endpoint for sensor data
+import React, { useState, useEffect } from 'react';
+import SensorDataVisualization from '../components/SensorDataVisualization';
 
-const SensorDataPage = () => {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
+function SensorDataPage() {
+  const [sensorData, setSensorData] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await getSensorData();
-      setData(result);
-      setLoading(false);
+    // Fetch sensor data from your API
+    const fetchSensorData = async () => {
+      try {
+        const response = await fetch('/api/sensor-data');
+        const data = await response.json();
+        setSensorData(data);
+      } catch (error) {
+        console.error('Error fetching sensor data:', error);
+      }
     };
-    fetchData();
+
+    fetchSensorData();
   }, []);
 
-  if (loading) {
-    return <CircularProgress />;
-  }
-
   return (
-    <Container>
-      <Typography variant="h4" component="h1" gutterBottom>
-        Sensor Data Dashboard
-      </Typography>
-      <Grid container spacing={3}>
-        {data.map((item) => (
-          <Grid item xs={12} sm={6} md={4} key={item.id}>
-            <Paper>
-              <Typography variant="h6" component="h3">
-                Sensor ID: {item.sensor_id}
-              </Typography>
-              <Typography>Temperature: {item.temperature}</Typography>
-              <Typography>Humidity: {item.humidity}</Typography>
-              <Typography>Timestamp: {item.timestamp}</Typography>
-            </Paper>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+    <div className="container mx-auto mt-10">
+      <h1 className="text-3xl font-bold mb-6">Sensor Data</h1>
+      {sensorData ? (
+        <SensorDataVisualization data={sensorData} />
+      ) : (
+        <p>Loading sensor data...</p>
+      )}
+    </div>
   );
-};
+}
 
 export default SensorDataPage;

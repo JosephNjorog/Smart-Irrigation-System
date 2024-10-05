@@ -1,45 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Typography, Grid, Paper, CircularProgress } from '@mui/material';
-import { getCropHealthData } from '../utils/api';
+import React, { useState, useEffect } from 'react';
+import CropHealthDashboard from '../components/CropHealthDashboard.jsx';
 
-const CropHealthPage = () => {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
+function CropHealthPage() {
+  const [cropHealthData, setCropHealthData] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await getCropHealthData();
-      setData(result);
-      setLoading(false);
+    // Fetch crop health data from your API
+    const fetchCropHealthData = async () => {
+      try {
+        const response = await fetch('/api/crop-health');
+        const data = await response.json();
+        setCropHealthData(data);
+      } catch (error) {
+        console.error('Error fetching crop health data:', error);
+      }
     };
-    fetchData();
+
+    fetchCropHealthData();
   }, []);
 
-  if (loading) {
-    return <CircularProgress />;
-  }
-
   return (
-    <Container>
-      <Typography variant="h4" component="h1" gutterBottom>
-        Crop Health Dashboard
-      </Typography>
-      <Grid container spacing={3}>
-        {data.map((item) => (
-          <Grid item xs={12} sm={6} md={4} key={item.id}>
-            <Paper>
-              <Typography variant="h6" component="h3">
-                Field ID: {item.field_id}
-              </Typography>
-              <Typography>Health Index: {item.health_index}</Typography>
-              <Typography>Pest Presence: {item.pest_presence ? 'Yes' : 'No'}</Typography>
-              <Typography>Timestamp: {item.timestamp}</Typography>
-            </Paper>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+    <div className="container mx-auto mt-10">
+      <h1 className="text-3xl font-bold mb-6">Crop Health Monitoring</h1>
+      {cropHealthData ? (
+        <CropHealthDashboard data={cropHealthData} />
+      ) : (
+        <p>Loading crop health data...</p>
+      )}
+    </div>
   );
-};
+}
 
 export default CropHealthPage;

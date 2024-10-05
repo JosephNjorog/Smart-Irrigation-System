@@ -1,14 +1,46 @@
 from fastapi import APIRouter, HTTPException
-from models.irrigation_model import IrrigationModel
+from pydantic import BaseModel
+from typing import List
+import random
 
 router = APIRouter()
 
-@router.get("/")
-async def get_irrigation_data():
-    # Fetch and return irrigation data
-    return {"message": "Irrigation data"}
+class IrrigationSchedule(BaseModel):
+    day: str
+    startTime: str
+    duration: int
 
-@router.post("/")
-async def create_irrigation_data(irrigation: IrrigationModel):
-    # Process and store irrigation data
-    return {"message": "Irrigation data created"}
+class IrrigationData(BaseModel):
+    waterUsage: float
+    soilMoisture: float
+    nextIrrigation: str
+    schedule: List[IrrigationSchedule]
+
+@router.get("/", response_model=IrrigationData)
+async def get_irrigation_data():
+    # In a real application, you would fetch this data from a database or IoT devices
+    return {
+        "waterUsage": round(random.uniform(100, 500), 2),
+        "soilMoisture": round(random.uniform(20, 80), 2),
+        "nextIrrigation": "2023-05-15 08:00:00",
+        "schedule": [
+            {"day": "Monday", "startTime": "06:00", "duration": 30},
+            {"day": "Wednesday", "startTime": "06:00", "duration": 30},
+            {"day": "Friday", "startTime": "06:00", "duration": 30},
+        ]
+    }
+
+@router.post("/schedule")
+async def update_irrigation_schedule(schedule: List[IrrigationSchedule]):
+    # In a real application, you would update the schedule in a database
+    return {"message": "Irrigation schedule updated successfully"}
+
+@router.get("/water-usage")
+async def get_water_usage(days: int = 7):
+    # In a real application, you would fetch this data from a database or IoT devices
+    return {
+        "data": [
+            {"date": f"2023-05-{i+1:02d}", "usage": round(random.uniform(100, 500), 2)}
+            for i in range(days)
+        ]
+    }

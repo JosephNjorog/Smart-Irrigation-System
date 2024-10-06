@@ -1,44 +1,44 @@
 import React from 'react';
-import { Line } from 'react-chartjs-2';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 function CropHealthDashboard({ data }) {
-  const chartData = {
-    labels: data.dates,
-    datasets: [
-      {
-        label: 'Crop Health Index',
-        data: data.healthIndex,
-        fill: false,
-        backgroundColor: 'rgb(75, 192, 192)',
-        borderColor: 'rgba(75, 192, 192, 0.2)',
-      },
-    ],
-  };
-
   return (
-    <div>
-      <h2 className="text-xl font-semibold mb-4">Crop Health Overview</h2>
-      <Line data={chartData} />
-      <div className="mt-6">
-        <h3 className="text-lg font-semibold">Detailed Analysis</h3>
-        <table className="min-w-full bg-white border">
-          <thead>
-            <tr>
-              <th className="py-2 px-4 border">Date</th>
-              <th className="py-2 px-4 border">Health Index</th>
-              <th className="py-2 px-4 border">Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.details.map((entry, index) => (
-              <tr key={index}>
-                <td className="py-2 px-4 border">{entry.date}</td>
-                <td className="py-2 px-4 border">{entry.index}</td>
-                <td className="py-2 px-4 border">{entry.notes}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <div className="bg-white shadow-md rounded-lg p-6">
+      <h2 className="text-2xl font-semibold mb-4">Crop Health Dashboard</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+        <div className="bg-green-100 p-4 rounded-md">
+          <h3 className="text-lg font-semibold mb-2">Overall Health</h3>
+          <p className="text-3xl font-bold">{data.overallHealth}%</p>
+        </div>
+        <div className="bg-yellow-100 p-4 rounded-md">
+          <h3 className="text-lg font-semibold mb-2">Pest Risk</h3>
+          <p className="text-3xl font-bold">{data.pestRisk}</p>
+        </div>
+        <div className="bg-blue-100 p-4 rounded-md">
+          <h3 className="text-lg font-semibold mb-2">Nutrient Levels</h3>
+          <p className="text-3xl font-bold">{data.nutrientLevels}</p>
+        </div>
+      </div>
+      <div className="mb-6">
+        <h3 className="text-xl font-semibold mb-2">Crop Growth Over Time</h3>
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart data={data.growthData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="height" fill="#8884d8" name="Height (cm)" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+      <div>
+        <h3 className="text-xl font-semibold mb-2">Recent Alerts</h3>
+        <ul className="list-disc pl-5">
+          {data.alerts.map((alert, index) => (
+            <li key={index} className="text-red-600">{alert}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );

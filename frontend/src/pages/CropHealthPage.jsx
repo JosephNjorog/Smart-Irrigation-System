@@ -1,31 +1,32 @@
-import React from 'react';
-import CropHealthDashboard from '../components/CropHealthDashboard.jsx';
-
-const dummyCropHealthData = {
-  dates: ['2024-01-01', '2024-02-01', '2024-03-01', '2024-04-01', '2024-05-01', '2024-06-01'],
-  healthIndex: [75, 80, 85, 90, 87, 92],
-  details: [
-    { date: '2024-01-01', index: 75, notes: 'Initial planting and growth phase.' },
-    { date: '2024-02-01', index: 80, notes: 'Fertilization and irrigation improved health.' },
-    { date: '2024-03-01', index: 85, notes: 'Pest control measures taken.' },
-    { date: '2024-04-01', index: 90, notes: 'Optimal growth conditions.' },
-    { date: '2024-05-01', index: 87, notes: 'Minor pest issues.' },
-    { date: '2024-06-01', index: 92, notes: 'Excellent health, ready for harvest.' },
-  ],
-};
+import React, { useState, useEffect } from 'react';
+import CropHealthDashboard from '../components/CropHealthDashboard';
 
 function CropHealthPage() {
+  const [cropHealthData, setCropHealthData] = useState(null);
+
+  useEffect(() => {
+    // Fetch crop health data from your API
+    const fetchCropHealthData = async () => {
+      try {
+        const response = await fetch('/api/crop-health');
+        const data = await response.json();
+        setCropHealthData(data);
+      } catch (error) {
+        console.error('Error fetching crop health data:', error);
+      }
+    };
+
+    fetchCropHealthData();
+  }, []);
+
   return (
-    <div className="container mx-auto p-4">
-      <header className="py-4 border-b mb-4">
-        <h1 className="text-2xl font-bold text-center">Crop Health Dashboard</h1>
-      </header>
-      <main>
-        <CropHealthDashboard data={dummyCropHealthData} />
-      </main>
-      <footer className="py-4 border-t text-center mt-4">
-        <p>&copy; 2024 Smart Farming Solutions. All rights reserved.</p>
-      </footer>
+    <div className="container mx-auto mt-10">
+      <h1 className="text-3xl font-bold mb-6">Crop Health Monitoring</h1>
+      {cropHealthData ? (
+        <CropHealthDashboard data={cropHealthData} />
+      ) : (
+        <p>Loading crop health data...</p>
+      )}
     </div>
   );
 }

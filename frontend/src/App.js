@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import IrrigationPage from './pages/IrrigationPage';
 import CropHealthPage from './pages/CropHealthPage';

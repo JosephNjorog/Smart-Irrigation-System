@@ -1,0 +1,67 @@
+/* NavbarFooterStyles.css */
+
+/* General styles for navbar and footer */
+.navbar, .footer {
+    background-color: #388e3c; /* Darker green for better visibility */
+    padding: 20px; /* Increased padding for a spacious look */
+  }
+  
+  /* Ensure navbar is rectangular */
+  .navbar {
+    border-radius: 5px; /* Rounded corners for the navbar */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  }
+  
+  /* Ensure footer is rectangular */
+  .footer {
+    border-radius: 5px; /* Rounded corners for the footer */
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  }
+  
+  /* Container styles for Navbar and Footer */
+  .container {
+    max-width: 1200px; /* Consistent max width */
+    margin: 0 auto; /* Center the content */
+    padding: 0 20px; /* Padding for responsiveness */
+  }
+  
+  /* Navbar links */
+  .nav-link {
+    color: white; /* Default color for links */
+    padding: 10px 15px; /* Padding for better click area */
+    border-radius: 5px; /* Rounded corners for the buttons */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+  }
+  
+  /* Hover effect for links */
+  .nav-link:hover {
+    background-color: #a5d6a7; /* Light green background on hover */
+    color: #1b5e20; /* Darker text color on hover */
+  }
+  
+  /* Footer styles */
+  .footer p {
+    margin: 5px 0; /* Margin between footer texts */
+  }
+  
+  .footer ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+  }
+  
+  .footer ul li {
+    display: inline; /* Display items inline */
+    margin: 0 10px; /* Margin for spacing */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    footer ul {
+      flex-direction: column; /* Stack footer items vertically on smaller screens */
+    }
+  
+    footer ul li {
+      margin-bottom: 5px; /* Space between items */
+    }
+  }
+  

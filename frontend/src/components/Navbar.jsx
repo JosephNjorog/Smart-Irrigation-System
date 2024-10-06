@@ -11,6 +11,8 @@ function Navbar() {
           <li><Link to="/irrigation" className="text-white hover:text-green-200">Irrigation</Link></li>
           <li><Link to="/crop-health" className="text-white hover:text-green-200">Crop Health</Link></li>
           <li><Link to="/sensor-data" className="text-white hover:text-green-200">Sensor Data</Link></li>
+          <li><Link to="/signup" className="text-white hover:text-green-200">Sign Up</Link></li>
+          <li><Link to="/signin" className="text-white hover:text-green-200">Sign In</Link></li>
         </ul>
       </div>
     </nav>

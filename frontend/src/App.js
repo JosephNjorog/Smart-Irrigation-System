@@ -5,6 +5,9 @@ import IrrigationPage from './pages/IrrigationPage';
 import CropHealthPage from './pages/CropHealthPage';
 import SensorDataPage from './pages/SensorDataPage';
 import Navbar from './components/Navbar';
+import SignUp from './components/SignUp'; // Import SignUp component
+import SignIn from './components/SignIn';   // Import SignIn component
+import './styles.css'; // Import the styles
 
 function App() {
   return (
@@ -12,10 +15,12 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/irrigation" component={IrrigationPage} />
-          <Route path="/crop-health" component={CropHealthPage} />
-          <Route path="/sensor-data" component={SensorDataPage} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/irrigation" element={<IrrigationPage />} />
+          <Route path="/crop-health" element={<CropHealthPage />} />
+          <Route path="/sensor-data" element={<SensorDataPage />} />
+          <Route path="/signup" element={<SignUp />} /> {/* Add SignUp route */}
+          <Route path="/signin" element={<SignIn />} /> {/* Add SignIn route */}
         </Routes>
       </div>
     </Router>
